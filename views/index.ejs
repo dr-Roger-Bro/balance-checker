@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Balance Checker</title>
+</head>
+<body>
+    <div class="main-container">
+
+        <h1> ✌️ Check your ETH balance 👇 </h1>
+
+        <form action="/balance" method="GET">
+            <label for="address">Address:</label>
+            <input 
+              type="text" 
+              id="address" 
+              name="address" 
+              pattern="^0x[a-fA-F0-9]{40}$" 
+              title="Please enter a valid ETH address" 
+              required>
+            <button type="submit">Check Balance</button>
+          </form>
+    
+          <p>
+           <% if(locals.balance) { %>
+                Balance = <%= balance %> ETH
+           <% } else if (locals.error) { %>
+                <%= error %>
+           <% } else { %>
+                No balance available.
+           <% } %>
+          </p>
+
+    </div>
+    
+
+    
+
+</body>
+</html>
